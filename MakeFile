@@ -1,0 +1,36 @@
+CC=g++
+CFLAGS=-ldl -lm -w
+PKG=`pkg-config --libs --cflags opencv`
+
+all: target1_src target2_src target3_src target4_src target5_src target6_src
+
+target1_src:
+	$(CC) question1.cpp -o add_rm_noise $(PKG) $(CFLAGS)
+target2_src:
+	$(CC) question2.cpp -o question2 $(PKG) $(CFLAGS)
+target3_src:
+	$(CC) question3.cpp -o sm_filter $(PKG) $(CFLAGS)
+target4_src:
+	$(CC) question4.cpp -o blur $(PKG) $(CFLAGS)
+target5_src:
+	$(CC) question5.cpp -o enh $(PKG) $(CFLAGS)
+target6_src:
+	$(CC) question6.cpp -o question6 $(PKG) $(CFLAGS)
+
+.PHONY: clean
+
+clean:
+	rm -f *.exe
+	rm -f *.o
+	rm -f enh
+	rm -f blur
+	rm -f sm_filter
+	rm -f add_rm_noise
+	rm -f question1
+	rm -f question2
+	rm -f question3
+	rm -f question4
+	rm -f question5
+	rm -f question6
+	rm -f *.jpg
+	rm -f *.png
